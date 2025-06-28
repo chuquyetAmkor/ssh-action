@@ -15,6 +15,11 @@ function log_error() {
 
 function detect_client_info() {
   CLIENT_PLATFORM="${SSH_CLIENT_OS:-$(uname -s | tr '[:upper:]' '[:lower:]')}"
+  
+if [[ "$CLIENT_PLATFORM" == mingw64_nt* ]]; then
+  CLIENT_PLATFORM="windows"
+fi
+
   CLIENT_ARCH="${SSH_CLIENT_ARCH:-$(uname -m)}"
 
   case "${CLIENT_PLATFORM}" in
