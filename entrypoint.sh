@@ -15,13 +15,10 @@ function log_error() {
 
 function detect_client_info() {
   CLIENT_PLATFORM="${SSH_CLIENT_OS:-$(uname -s | tr '[:upper:]' '[:lower:]')}"
-  
+  CLIENT_ARCH="${SSH_CLIENT_ARCH:-$(uname -m)}"
 if [[ "$CLIENT_PLATFORM" == mingw64_nt* ]]; then
   CLIENT_PLATFORM="windows"
 fi
-
-  CLIENT_ARCH="${SSH_CLIENT_ARCH:-$(uname -m)}"
-
   case "${CLIENT_PLATFORM}" in
   darwin | linux | windows) ;;
   *) log_error "Unknown or unsupported platform: ${CLIENT_PLATFORM}. Supported platforms are Linux, Darwin, and Windows." 2 ;;
