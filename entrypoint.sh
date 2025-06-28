@@ -19,7 +19,7 @@ function detect_client_info() {
 
 
 if echo "$CLIENT_PLATFORM" | grep -qi '^mingw64_nt'; then
-  CLIENT_PLATFORM="windows"
+  CLIENT_PLATFORM= windows
 fi
 
 
