@@ -17,9 +17,8 @@ function detect_client_info() {
   CLIENT_PLATFORM="${SSH_CLIENT_OS:-$(uname -s | tr '[:upper:]' '[:lower:]')}"
   CLIENT_ARCH="${SSH_CLIENT_ARCH:-$(uname -m)}"
 
-
 if echo "$CLIENT_PLATFORM" | grep -qi '^mingw64_nt'; then
-  CLIENT_PLATFORM= windows
+  CLIENT_PLATFORM="windows"
 fi
 
 
